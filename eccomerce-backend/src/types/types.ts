@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-
 export interface NewUserRequestBody{
     name: string;
     email: string;
@@ -35,4 +34,10 @@ export type ControllerType = (
     };
     price?: { $lte: number };
     category?: string;
+  }
+
+  export type invalidateCacheProps={
+    product?:boolean;
+    order?:boolean;
+    admin?:boolean
   }
