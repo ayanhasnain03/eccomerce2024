@@ -2,8 +2,8 @@ import mongoose from "mongoose"
 import { invalidateCacheProps } from "../types/types.js"
 import { myCache } from "../app.js"
 import { Product } from "../models/product.js"
-export const connectDb = ()=>{
-mongoose.connect("mongodb://localhost:27017",{
+export const connectDb = (uri:string)=>{
+mongoose.connect(uri,{
     dbName:"Eccomercem24",
 }).then(c=>{
     console.log(`DB Connect to ${c.connection.host}`)
