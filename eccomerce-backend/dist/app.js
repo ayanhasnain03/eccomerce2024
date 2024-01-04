@@ -9,6 +9,7 @@ import userRoutes from "./routes/user.js";
 import productRoute from "./routes/products.js";
 import orderRoute from "./routes/order.js";
 import paymentRoute from "./routes/payment.js";
+import dashboard from "./routes/stats.js";
 config({
     path: "./.env"
 });
@@ -24,6 +25,7 @@ app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/order", orderRoute);
 app.use("/api/v1/payment", paymentRoute);
+app.use("/api/v1/dashboard", dashboard);
 app.get("/", (req, res, next) => {
     res.send("hello");
 });
