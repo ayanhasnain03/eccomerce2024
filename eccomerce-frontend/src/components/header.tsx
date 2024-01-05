@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { FaSearch, FaShoppingBag, FaSignInAlt, FaSignOutAlt, FaUser} from "react-icons/fa"
 import { Link } from "react-router-dom"
-const user = {
-    _id:"err",
-    role:"admin"
+import { User } from "../types/types";
+
+
+interface PropsType {
+  user: User | null;
 }
-const Header = () => {
+const Header = ({user}:PropsType) => {
   const [isOpen, setisOpen] = useState<boolean>(false);
   const logoutHandler =()=>{
 setisOpen(false)

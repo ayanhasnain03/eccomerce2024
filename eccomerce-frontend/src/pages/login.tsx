@@ -4,7 +4,7 @@ import {FcGoogle} from 'react-icons/fc'
 import { auth } from "../firebase"
 import toast from "react-hot-toast"
 import { useLoginMutation } from "../redux/api/userApi"
-import { FetchBaseQueryError, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
 import { MessageResponse } from "../types/api-types"
 
 
@@ -18,14 +18,15 @@ try {
   const provider = new GoogleAuthProvider();
   const { user } = await signInWithPopup(auth, provider);
   const res = await login({
-     name:"Ayan",
-    email:"iwsws",
-    gender:"male",
-    photo:"ssddsd",
+     name:user.displayName!,
+    email:user.email!,
+    gender,
+    photo:user.photoURL!,
     role:"user",
      dob:date,
-    _id:"yrrtyhhhgf"
+    _id:user.uid,
    })
+   console.log(res)
    if("data" in res){
     toast.success(res.data.message)
    }else{
@@ -34,7 +35,7 @@ try {
     toast.error(message)
 
   }
-console.log(user)
+
 } catch (error) {
   toast.error("sign in fail")
 }
